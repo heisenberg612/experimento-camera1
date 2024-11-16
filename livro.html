@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso à Câmera</title>
+</head>
+<body>
+    <h1>Acesso à Câmera - Experimento</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <script>
+        async function acessarCamera() {
+            const videoElement = document.getElementById('video');
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoElement.srcObject = stream;
+            } catch (err) {
+                console.error("Erro ao acessar a câmera:", err);
+                alert("Não foi possível acessar a câmera. Verifique as permissões.");
+            }
+        }
+        window.addEventListener('load', acessarCamera);
+    </script>
+</body>
+</html>
